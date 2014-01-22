@@ -11,7 +11,7 @@ A C# command-line tool for fast, parallel mass (bulk) uploading to your Azure st
 
 ### Usage?
 
-Open *App.config* and fix your connection string accordingly. Then you can run azupload.exe with:
+Open *App.config* and fix your connection string accordingly. Then you can run *azupload.exe* with:
 
 `azupload.exe <azure_storage_container> <local_folder_to_upload>`
 
