@@ -2,7 +2,7 @@
 
 ### What is it?
 
-A command-line tool for fast, parallel mass/bulk uploading to your Azure storage
+A C# command-line tool for fast, parallel mass (bulk) uploading to your Azure storage.
 
 ### Prerequisites?
 
