@@ -38,6 +38,6 @@ In fact the initial version used PowerShell. I came to the following conclusions
  * It's extremely poorly documented.
  * It seems to be impossible to run jobs in parallel properly thanks to *InitializationScript*'s *Import-Module* directive being completely ignored when trying to *Start-Job* and thus rendering Azure commands unavailable to the child jobs.
 
-### Does it work on anything other than Windows
+### Does it work on Linux or OS X?
 
 Unfortunately Mono doesn't seem to support Azure (it needs the *Microsoft.WindowsAzure.Storage* assembly) so I'm afraid no. But if you somehow get it to work, let me know please!
