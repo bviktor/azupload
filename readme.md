@@ -21,3 +21,9 @@ For my personal tests I've used a folder containing about 3000 files with a tota
 
 * (unnamed commercial GUI application): 20 minutes
 * azupload: 8 minutes
+
+# Improvements
+
+There's an excellent write-up on the topic:
+
+[How to use the Windows Azure Blob Storage Service in .NET](http://www.windowsazure.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs-20/)
