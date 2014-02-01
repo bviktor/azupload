@@ -17,7 +17,7 @@ A command-line tool for fast, parallel mass (bulk) uploading to your Azure stora
 
 Open *csharp\App.config* or *java\app.properties* and fix your connection string accordingly. Then you can run *azupload* with:
 
-`azupload.exe <azureContainer> <sourceDir>`
+`azupload.exe <sourceDir> <azureContainer>`
 
 or
 

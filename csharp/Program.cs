@@ -16,8 +16,8 @@ namespace azupload
         static void Main(string[] args)
         {
             string connString = ConfigurationManager.AppSettings["uploadConn"];
-            string azureContainer = args[0];
-            string rootFolder = args[1];
+            string rootFolder = args[0];
+            string azureContainer = args[1];
 
             Console.WriteLine("Uploading files from \"" + rootFolder + "\" to the \"" + azureContainer + "\" container");
 
