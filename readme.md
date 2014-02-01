@@ -1,19 +1,21 @@
 # azupload
 
-### What is it?
+### What is it
 
-A command-line tool for fast, parallel mass (bulk) uploading to your Azure storage.
+A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure storage.
 
-### Prerequisites?
+
+### Downloads
 
  * C#
-   * [Visual Studio 2013](http://www.visualstudio.com/downloads/download-visual-studio-vs) (you'll need Windows Desktop **and** Web)
-   * [Azure SDK](http://www.windowsazure.com/en-us/downloads/) for VS 2013
+   * [azupload-csharp](http://www.mediafire.com/download/d0sk3tby77220gc/azupload-csharp-20140201.7z)
+   * [Microsoft .NET Framework 4.5](http://www.microsoft.com/en-us/download/details.aspx?id=30653)
  * Java
-   * [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-   * [NetBeans Java SE](https://netbeans.org/downloads/index.html) or [Ant](http://ant.apache.org/bindownload.cgi) zip
+   * [azupload-java](http://www.mediafire.com/download/b7rcmx7b4llacbc/azupload-java-20140201.7z)
+   * [JRE 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-### Usage?
+
+### Usage
 
  * C#
    * open *csharp\App.config* and fix your connection string accordingly
@@ -27,18 +29,31 @@ A command-line tool for fast, parallel mass (bulk) uploading to your Azure stora
 
 **WARNING**: if the files you try to upload already exist in the container, *azupload* WILL overwrite anything without asking, so use carefully!
 
-### Speed?
+
+### Building
+
+ * C#
+   * [Visual Studio 2013](http://www.visualstudio.com/downloads/download-visual-studio-vs) (you'll need Windows Desktop **and** Web)
+   * [Azure SDK](http://www.windowsazure.com/en-us/downloads/) for VS 2013
+ * Java
+   * [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+   * [NetBeans Java SE](https://netbeans.org/downloads/index.html) or [Ant](http://ant.apache.org/bindownload.cgi) zip
+
+
+### Speed
 
 For my personal tests I've used a folder containing about 3000 files with a total size of about 300 MiB.
 
 * (unnamed commercial GUI application): 20 minutes
 * azupload: 8 minutes
 
-### Improvements?
+
+### Improvements
 
 There's an excellent write-up on the topic:
 
 [How to use the Windows Azure Blob Storage Service in .NET](http://www.windowsazure.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs-20/)
+
 
 ### Why not PowerShell?
 
@@ -47,6 +62,7 @@ In fact the initial version used PowerShell. I came to the following conclusions
  * It's s-l-o-w.
  * It's extremely poorly documented.
  * It seems to be impossible to run jobs in parallel properly thanks to *InitializationScript*'s *Import-Module* directive being completely ignored when trying to *Start-Job* and thus rendering Azure commands unavailable to the child jobs.
+
 
 ### Does it work on Linux or OS X?
 
