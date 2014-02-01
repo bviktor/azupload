@@ -13,19 +13,22 @@ namespace azupload
 {
     class Program
     {
-        static void Main(string[] args)
+        static void printHelp()
+        {
+            Console.WriteLine("Usage:\n\tazupload --upload <sourceDir> <azureContainer>");
+        }
+
+        static void uploadFolder(string sourceDir, string azureContainer)
         {
             string connString = ConfigurationManager.AppSettings["uploadConn"];
-            string rootFolder = args[0];
-            string azureContainer = args[1];
 
-            Console.WriteLine("Uploading files from \"" + rootFolder + "\" to the \"" + azureContainer + "\" container");
+            Console.WriteLine("Uploading files from \"" + sourceDir + "\" to the \"" + azureContainer + "\" container");
 
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connString);
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
             CloudBlobContainer container = blobClient.GetContainerReference(azureContainer);
 
-            string[] fileList = Directory.GetFiles(rootFolder, "*", SearchOption.AllDirectories);
+            string[] fileList = Directory.GetFiles(sourceDir, "*", SearchOption.AllDirectories);
             int fileCount = fileList.Count();
             int i = 0;
 
@@ -37,18 +40,43 @@ namespace azupload
                 i++;
 
                 /* cut leading path */
-                string blobItem = item.Substring(rootFolder.Length + 1);
+                string blobItem = item.Substring(sourceDir.Length + 1);
                 Console.WriteLine("Uploading file " + i + "/" + fileCount + " : " + blobItem);
 
                 CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobItem);
 
                 using (var fileStream = System.IO.File.OpenRead(item))
                 {
-                   blockBlob.UploadFromStream(fileStream);
+                    blockBlob.UploadFromStream(fileStream);
                 }
             });
 
             Console.WriteLine("Upload finished");
+        }
+
+        static void Main(string[] args)
+        {
+            if (args.Length == 0)
+            {
+                printHelp();
+                return;
+            }
+
+            string mode = args[0];
+
+            if (mode.Equals("--upload"))
+            {
+                if (args.Length != 3)
+                {
+                    printHelp();
+                    return;
+                }
+                uploadFolder(args[1], args[2]);
+            }
+            else
+            {
+                printHelp();
+            }
         }
     }
 }
