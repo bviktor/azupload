@@ -71,7 +71,19 @@ namespace azupload
                     printHelp();
                     return;
                 }
-                uploadFolder(args[1], args[2]);
+
+                /* trim trailing slashes */
+                string sDir;
+                if (args[1].EndsWith("\\"))
+                {
+                    sDir = args[1].Substring(0, args[1].Length - 1);
+                }
+                else
+                {
+                    sDir = args[1];
+                }
+
+                uploadFolder(sDir, args[2]);
             }
             else
             {
