@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static java.lang.System.out;
 
-/* Azure SDK classes*/
+/* Azure SDK classes */
 import com.microsoft.windowsazure.services.core.storage.*;
 import com.microsoft.windowsazure.services.blob.client.*;
 
