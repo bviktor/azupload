@@ -2,20 +2,28 @@
 
 ### What is it?
 
-A C# command-line tool for fast, parallel mass (bulk) uploading to your Azure storage.
+A command-line tool for fast, parallel mass (bulk) uploading to your Azure storage.
 
 ### Prerequisites?
 
- * [Visual Studio 2013](http://www.visualstudio.com/downloads/download-visual-studio-vs) (you'll need Windows Desktop **and** Web)
- * [Azure SDK](http://www.windowsazure.com/en-us/downloads/) for VS 2013
+ * C#
+   * [Visual Studio 2013](http://www.visualstudio.com/downloads/download-visual-studio-vs) (you'll need Windows Desktop **and** Web)
+   * [Azure SDK](http://www.windowsazure.com/en-us/downloads/) for VS 2013
+ * Java
+   * [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+   * [NetBeans Java SE](https://netbeans.org/downloads/index.html)
 
 ### Usage?
 
-Open *App.config* and fix your connection string accordingly. Then you can run *azupload.exe* with:
+Open *csharp\App.config* or *java\app.properties* and fix your connection string accordingly. Then you can run *azupload* with:
 
-`azupload.exe <azure_storage_container> <local_folder_to_upload>`
+`azupload.exe <azureContainer> <sourceDir>`
 
-**WARNING**: if the files you try to upload already exist in the container, azupload WILL overwrite anything without asking, so use carefully!
+or
+
+`java -jar azupload.jar --upload <sourceDir> <azureContainer> <threadCount>`
+
+**WARNING**: if the files you try to upload already exist in the container, *azupload* WILL overwrite anything without asking, so use carefully!
 
 ### Speed?
 
@@ -40,4 +48,4 @@ In fact the initial version used PowerShell. I came to the following conclusions
 
 ### Does it work on Linux or OS X?
 
-Unfortunately Mono doesn't seem to support Azure (it needs the *Microsoft.WindowsAzure.Storage* assembly) so I'm afraid no. But if you somehow get it to work, let me know please!
+The Java version does! Unfortunately Mono doesn't seem to support Azure (it needs the *Microsoft.WindowsAzure.Storage* assembly) so the C# version is Windows-only for now.
