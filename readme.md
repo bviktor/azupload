@@ -18,13 +18,11 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
 ### Usage
 
  * C#
-   * open *csharp\App.config* and fix your connection string accordingly
-   * build in Visual Studio or with MSBuild (see *build.bat*)
+   * open *azupload.exe.config* and fix your connection string accordingly
    * `azupload.exe --upload <sourceDir> <azureContainer>`
 
  * Java
-   * open *java\app.properties* and fix your connection string accordingly
-   * build in NetBeans or with Ant (see *build.bat*)
+   * open *app.properties* and fix your connection string accordingly
    * `java -jar azupload.jar --upload <sourceDir> <azureContainer> <threadCount>`
 
 **WARNING**: if the files you try to upload already exist in the container, *azupload* WILL overwrite anything without asking, so use carefully!
