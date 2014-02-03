@@ -23,7 +23,7 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
 
  * Java
    * open *app.properties* and fix your connection string accordingly
-   * `java -jar azupload.jar --upload <sourceDir> <azureContainer> <threadCount>`
+   * `java -jar azupload.jar --upload <threadCount> <sourceDir> <azureContainer> [containerPrefix]`
 
 **WARNING**: if the files you try to upload already exist in the container, *azupload* WILL overwrite anything without asking, so use carefully!
 

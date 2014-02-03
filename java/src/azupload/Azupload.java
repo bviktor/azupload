@@ -26,7 +26,7 @@ public class Azupload
 
     static void printHelp()
     {
-        out.println("Usage:\n\tazupload --upload <sourceDir> <azureContainer> <threadCount>");
+        out.println("Usage:\n\tazupload --upload <threadCount> <sourceDir> <azureContainer> [containerPrefix]");
     }
 
     /* helper method for listing files recursively */
@@ -55,7 +55,7 @@ public class Azupload
     }
 
     /* parallel uploader method */
-    static void uploadFolder(final String sourceDir, String azureContainer, int threadCount)
+    static void uploadFolder(int threadCount, final String sourceDir, String azureContainer, final String containerPrefix)
     {
         /* parse the properties file */
         Properties properties = new Properties();
@@ -98,7 +98,7 @@ public class Azupload
                         try
                         {
                             /* make sourceDir the root in the container */
-                            String blobItem = o.toString().substring(sourceDir.length() + 1);
+                            String blobItem = containerPrefix + o.toString().substring(sourceDir.length() + 1);
 
                             /* avoid printing several filenames while the counter is of the same value */
                             synchronized (counter)
@@ -155,24 +155,49 @@ public class Azupload
 
             if (mode.equals("--upload"))
             {
-                if (args.length != 4)
+                String cPrefix;
+                String dirSep = System.getProperty("file.separator");
+
+                switch (args.length)
                 {
-                    printHelp();
-                    return;
+                    case 4:
+                        cPrefix = "";
+                        break;
+                    case 5:
+                        cPrefix = args[4];
+                        break;
+                    default:
+                        printHelp();
+                        return;
                 }
 
-                /* trim trailing slashes */
-                String sDir;
-                if (args[1].endsWith("\\") || args[1].endsWith("/"))
+                /* make sure the prefix will be treated as a virtual folder, not as a file name prefix */
+                if (!cPrefix.endsWith(dirSep) && !cPrefix.equals(""))
                 {
-                    sDir = args[1].substring(0, args[1].length() - 1);
+                    cPrefix = cPrefix + dirSep;
+                }
+
+                /* trim the trailing slash from sourceDir, otherwise we'd trim the leading character in filenames */
+                String sDir;
+
+                if (args[2].endsWith(dirSep))
+                {
+                    sDir = args[2].substring(0, args[2].length() - 1);
                 }
                 else
                 {
-                    sDir = args[1];
+                    sDir = args[2];
                 }
 
-                uploadFolder(sDir, args[2], Integer.parseInt(args[3]));
+                try
+                {
+                    uploadFolder(Integer.parseInt(args[1]), sDir, args[3], cPrefix);
+                }
+                catch (java.lang.NumberFormatException e)
+                {
+                    out.println(args[1] + "is not a valid number!");
+                    System.exit(1);
+                }
             }
             else
             {
