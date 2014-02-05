@@ -95,10 +95,11 @@ public class Azupload
                     @Override
                     public void run()
                     {
+                        String blobItem = null;
                         try
                         {
                             /* make sourceDir the root in the container */
-                            String blobItem = containerPrefix + o.toString().substring(sourceDir.length() + 1);
+                            blobItem = containerPrefix + o.toString().substring(sourceDir.length() + 1);
 
                             /* avoid printing several filenames while the counter is of the same value */
                             synchronized (counter)
@@ -113,7 +114,9 @@ public class Azupload
                         }
                         catch (IOException | java.net.URISyntaxException | StorageException e)
                         {
-                            out.println(e.toString());
+                            //out.println(e.toString());
+                            e.printStackTrace();
+                            out.println("Exception thrown while uploading " + blobItem);
                             System.exit(1);
                         }
                     }
