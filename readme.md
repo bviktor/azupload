@@ -56,9 +56,8 @@ For my personal tests I've used a folder containing about 3000 files with a tota
 
 ### Improvements
 
-There's an excellent write-up on the topic:
-
-[How to use the Windows Azure Blob Storage Service in .NET](http://www.windowsazure.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs-20/)
+* [How to use Blob Storage from .NET](http://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/)
+* [How to use Blob Storage from Java](http://azure.microsoft.com/en-us/documentation/articles/storage-java-how-to-use-blob-storage/)
 
 
 ### Why not PowerShell?
