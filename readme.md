@@ -12,7 +12,7 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
    * [Microsoft .NET Framework 4.5](http://www.microsoft.com/en-us/download/details.aspx?id=30653)
  * Java
    * [azupload-java](http://www.mediafire.com/download/3f1wt1teyw1599u/azupload-java-20140201.7z)
-   * [JRE 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+   * [JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 
 ### Usage
@@ -33,8 +33,8 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
  * C#
    * [Visual Studio 2013](http://www.visualstudio.com/downloads/download-visual-studio-vs) (you'll need Windows Desktop **and** Web)
  * Java
-   * [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-   * [NetBeans Java SE](https://netbeans.org/downloads/index.html) or [Ant](http://ant.apache.org/bindownload.cgi) zip
+   * [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+   * [NetBeans 8 Java SE](https://netbeans.org/downloads/index.html) or [Ant](http://ant.apache.org/bindownload.cgi) zip
 
 
 ### Differences between the C# and Java versions
