@@ -32,7 +32,6 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
 
  * C#
    * [Visual Studio 2013](http://www.visualstudio.com/downloads/download-visual-studio-vs) (you'll need Windows Desktop **and** Web)
-   * [Azure SDK](http://www.windowsazure.com/en-us/downloads/) for VS 2013
  * Java
    * [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
    * [NetBeans Java SE](https://netbeans.org/downloads/index.html) or [Ant](http://ant.apache.org/bindownload.cgi) zip
