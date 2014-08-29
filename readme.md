@@ -37,7 +37,7 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
    * [NetBeans Java SE](https://netbeans.org/downloads/index.html) or [Ant](http://ant.apache.org/bindownload.cgi) zip
 
 
-### Differences between the C# and Java version
+### Differences between the C# and Java versions
 
  * In the Java version you need to specify the number of uploader threads. The C# version does this automatically.
  * In the Java version you can specify a container prefix that is prepended to filenames. This allows you to upload files to subfolders under the container root.
