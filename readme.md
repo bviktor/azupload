@@ -9,7 +9,7 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
 
  * C#
    * [azupload-csharp](http://www.mediafire.com/download/17w7060dclr2max/azupload-csharp-20140201.7z)
-   * [Microsoft .NET Framework 4.5](http://www.microsoft.com/en-us/download/details.aspx?id=30653)
+   * [Microsoft .NET Framework 4.5](http://www.microsoft.com/en-us/download/details.aspx?id=30653) or [Mono MRE 3.6](http://www.mono-project.com/download/)
  * Java
    * [azupload-java](http://www.mediafire.com/download/3f1wt1teyw1599u/azupload-java-20140201.7z)
    * [JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -31,7 +31,7 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
 ### Building
 
  * C#
-   * [Visual Studio 2013](http://www.visualstudio.com/downloads/download-visual-studio-vs) (you'll need Windows Desktop **and** Web)
+   * [Visual Studio 2013](http://www.visualstudio.com/downloads/download-visual-studio-vs) (you'll need Windows Desktop **and** Web) or [Mono MDK 3.6](http://www.mono-project.com/download/) + [MonoDevelop 5](http://monodevelop.com/Download)
  * Java
    * [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
    * [NetBeans 8 Java SE](https://netbeans.org/downloads/index.html) or [Ant](http://ant.apache.org/bindownload.cgi) zip
@@ -71,4 +71,4 @@ In fact the initial version used PowerShell. I came to the following conclusions
 
 ### Does it work on Linux or OS X?
 
-The Java version does! Unfortunately Mono doesn't seem to support Azure (it needs the *Microsoft.WindowsAzure.Storage* assembly) so the C# version is Windows-only for now.
+Yes, it does!
