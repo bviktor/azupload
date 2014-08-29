@@ -8,10 +8,10 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
 ### Downloads
 
  * C#
-   * [azupload-csharp](http://www.mediafire.com/download/17w7060dclr2max/azupload-csharp-20140201.7z)
+   * [azupload-csharp](http://www.mediafire.com/download/ihtssa9fq575u8w/azupload-csharp-20140829.7z)
    * [Microsoft .NET Framework 4.5](http://www.microsoft.com/en-us/download/details.aspx?id=30653) or [Mono MRE 3.6](http://www.mono-project.com/download/)
  * Java
-   * [azupload-java](http://www.mediafire.com/download/3f1wt1teyw1599u/azupload-java-20140201.7z)
+   * [azupload-java](http://www.mediafire.com/download/q2jrn5weoxlf0ys/azupload-java-20140829.7z)
    * [JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 
