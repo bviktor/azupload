@@ -15,12 +15,13 @@ namespace azupload
     {
         static void printHelp()
         {
-            Console.WriteLine("Usage:\n\tazupload --upload <sourceDir> <azureContainer>");
+            Console.WriteLine("Usage:\n\tazupload --upload <sourceDir> <azureContainer> [ttlMinutes]");
         }
 
-        static void uploadFolder(string sourceDir, string azureContainer)
+        static void uploadFolder(string sourceDir, string azureContainer, int ttlMins)
         {
             string connString = ConfigurationManager.AppSettings["uploadConn"];
+            int ttlSecs = ttlMins * 60;
 
             Console.WriteLine("Uploading files from \"" + sourceDir + "\" to the \"" + azureContainer + "\" container");
 
@@ -41,13 +42,15 @@ namespace azupload
 
                 /* cut leading path */
                 string blobItem = item.Substring(sourceDir.Length + 1);
-                Console.WriteLine("Uploading file " + i + "/" + fileCount + " : " + blobItem);
+                Console.WriteLine("Uploading file " + i + "/" + fileCount + " with " + ttlMins + " min TTL : " + blobItem);
 
                 CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobItem);
 
                 using (var fileStream = System.IO.File.OpenRead(item))
                 {
                     blockBlob.UploadFromStream(fileStream);
+                    blockBlob.Properties.CacheControl = "public, max-age=" + ttlSecs;
+                    blockBlob.SetProperties();
                 }
             });
 
@@ -66,7 +69,7 @@ namespace azupload
 
             if (mode.Equals("--upload"))
             {
-                if (args.Length != 3)
+                if (args.Length < 3)
                 {
                     printHelp();
                     return;
@@ -83,7 +86,22 @@ namespace azupload
                     sDir = args[1];
                 }
 
-                uploadFolder(sDir, args[2]);
+                /* if TTL is supplied, try to parse it, otherwise use a default of 1440 minutes (1 day) */
+                int ttl = 1440;
+                if (args.Length == 4)
+                {
+                    try
+                    {
+                        ttl = Convert.ToInt32(args[3]);
+                    }
+                    catch (Exception)
+                    {
+                        printHelp();
+                        return;
+                    }
+                }
+
+                uploadFolder(sDir, args[2], ttl);
             }
             else
             {
