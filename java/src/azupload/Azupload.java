@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 import static java.lang.System.out;
 
 /* Azure SDK classes */
-import com.microsoft.windowsazure.services.core.storage.*;
-import com.microsoft.windowsazure.services.blob.client.*;
+import com.microsoft.azure.storage.*;
+import com.microsoft.azure.storage.blob.*;
 
 public class Azupload
 {
