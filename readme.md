@@ -41,7 +41,7 @@ A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure
 
  * In the Java version you need to specify the number of uploader threads. The C# version does this automatically.
  * In the Java version you can specify a container prefix that is prepended to filenames. This allows you to upload files to subfolders under the container root.
- * In the C# version you can specify the TTL for uploaded blobs (i.e. the time it takes for a cache refresh on the CDN nodes).
+ * In the C# version you can specify the TTL for uploaded blobs, i.e. the time it takes for a cache refresh to occur on the CDN nodes.
 
 Of course these could be eliminated, it just fits our needs the way it is. PRs are welcome.
 
