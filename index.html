@@ -1,0 +1,167 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Azupload</title>
+  <meta name="description" content="Command-line tool for fast, parallel mass (bulk) blob uploads to your Azure storage">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Azupload</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Command-line tool for fast, parallel mass (bulk) blob uploads to your Azure storage</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/bviktor/azupload/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/bviktor/azupload/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/bviktor/azupload" class="code">View Azupload on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>
+<a name="azupload" class="anchor" href="#azupload"><span class="octicon octicon-link"></span></a>azupload</h1>
+
+<h3>
+<a name="what-is-it" class="anchor" href="#what-is-it"><span class="octicon octicon-link"></span></a>What is it</h3>
+
+<p>A command-line tool for fast, parallel mass (bulk) uploading blobs to your Azure storage.</p>
+
+<h3>
+<a name="downloads" class="anchor" href="#downloads"><span class="octicon octicon-link"></span></a>Downloads</h3>
+
+<ul>
+<li>C#
+
+<ul>
+<li><a href="http://www.mediafire.com/download/ihtssa9fq575u8w/azupload-csharp-20140829.7z">azupload-csharp</a></li>
+<li>
+<a href="http://www.microsoft.com/en-us/download/details.aspx?id=30653">Microsoft .NET Framework 4.5</a> or <a href="http://www.mono-project.com/download/">Mono MRE 3.6</a>
+</li>
+</ul>
+</li>
+<li>Java
+
+<ul>
+<li><a href="http://www.mediafire.com/download/q2jrn5weoxlf0ys/azupload-java-20140829.7z">azupload-java</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JRE 8</a></li>
+</ul>
+</li>
+</ul><h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<ul>
+<li>
+<p>C#</p>
+
+<ul>
+<li>open <em>azupload.exe.config</em> and fix your connection string accordingly</li>
+<li><code>azupload.exe --upload &lt;sourceDir&gt; &lt;azureContainer&gt; [ttlMinutes]</code></li>
+</ul>
+</li>
+<li>
+<p>Java</p>
+
+<ul>
+<li>open <em>app.properties</em> and fix your connection string accordingly</li>
+<li><code>java -jar azupload.jar --upload &lt;threadCount&gt; &lt;sourceDir&gt; &lt;azureContainer&gt; [containerPrefix]</code></li>
+</ul>
+</li>
+</ul><p><strong>WARNING</strong>: if the files you try to upload already exist in the container, <em>azupload</em> WILL overwrite anything without asking, so use carefully!</p>
+
+<h3>
+<a name="building" class="anchor" href="#building"><span class="octicon octicon-link"></span></a>Building</h3>
+
+<ul>
+<li>C#
+
+<ul>
+<li>
+<a href="http://www.visualstudio.com/downloads/download-visual-studio-vs">Visual Studio 2013</a> (you'll need Windows Desktop <strong>and</strong> Web) or <a href="http://www.mono-project.com/download/">Mono MDK 3.6</a> + <a href="http://monodevelop.com/Download">MonoDevelop 5</a>
+</li>
+</ul>
+</li>
+<li>Java
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 8</a></li>
+<li>
+<a href="https://netbeans.org/downloads/index.html">NetBeans 8 Java SE</a> or <a href="http://ant.apache.org/bindownload.cgi">Ant</a> zip</li>
+</ul>
+</li>
+</ul><h3>
+<a name="differences-between-the-c-and-java-versions" class="anchor" href="#differences-between-the-c-and-java-versions"><span class="octicon octicon-link"></span></a>Differences between the C# and Java versions</h3>
+
+<ul>
+<li>In the Java version you need to specify the number of uploader threads. The C# version does this automatically.</li>
+<li>In the Java version you can specify a container prefix that is prepended to filenames. This allows you to upload files to subfolders under the container root.</li>
+<li>In the C# version you can specify the TTL for uploaded blobs, i.e. the time it takes for a cache refresh to occur on the CDN nodes.</li>
+</ul><p>Of course these could be eliminated, it just fits our needs the way it is. PRs are welcome.</p>
+
+<h3>
+<a name="speed" class="anchor" href="#speed"><span class="octicon octicon-link"></span></a>Speed</h3>
+
+<p>For my personal tests I've used a folder containing about 3000 files with a total size of about 300 MiB.</p>
+
+<ul>
+<li>(unnamed commercial GUI application): 20 minutes</li>
+<li>azupload: 8 minutes</li>
+</ul><h3>
+<a name="improvements" class="anchor" href="#improvements"><span class="octicon octicon-link"></span></a>Improvements</h3>
+
+<ul>
+<li><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/">How to use Blob Storage from .NET</a></li>
+<li><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-java-how-to-use-blob-storage/">How to use Blob Storage from Java</a></li>
+</ul><h3>
+<a name="why-not-powershell" class="anchor" href="#why-not-powershell"><span class="octicon octicon-link"></span></a>Why not PowerShell?</h3>
+
+<p>In fact the initial version used PowerShell. I came to the following conclusions:</p>
+
+<ul>
+<li>It's s-l-o-w.</li>
+<li>It's extremely poorly documented.</li>
+<li>It seems to be impossible to run jobs in parallel properly thanks to <em>InitializationScript</em>'s <em>Import-Module</em> directive being completely ignored when trying to <em>Start-Job</em> and thus rendering Azure commands unavailable to the child jobs.</li>
+</ul><h3>
+<a name="does-it-work-on-linux-or-os-x" class="anchor" href="#does-it-work-on-linux-or-os-x"><span class="octicon octicon-link"></span></a>Does it work on Linux or OS X?</h3>
+
+<p>Yes, it does!</p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/bviktor" class="avatar"><img src="https://avatars2.githubusercontent.com/u/5798552?v=2&amp;s=60" width="48" height="48"></a> <a href="https://github.com/bviktor">bviktor</a> maintains <a href="https://github.com/bviktor/azupload">Azupload</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/bviktor/azupload/tarball/master" class="tar">tar</a><a href="https://github.com/bviktor/azupload/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
