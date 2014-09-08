@@ -49,7 +49,7 @@ namespace azupload
                 using (var fileStream = System.IO.File.OpenRead(item))
                 {
                     blockBlob.UploadFromStream(fileStream);
-                    blockBlob.Properties.CacheControl = "public, max-age=" + ttlSecs;
+                    blockBlob.Properties.CacheControl = "public, no-transform, max-age=" + ttlSecs + ", s-maxage=" + ttlSecs;
                     blockBlob.SetProperties();
                 }
             });
